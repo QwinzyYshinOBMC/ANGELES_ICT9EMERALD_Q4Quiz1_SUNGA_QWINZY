@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BMI Calculator</title>
+	<style>
+
+
+	body {
+      font-family: georgia, serif;
+      background-color: #eab19c; 
+      text-align: center;
+    }
+
+    h1, p {
+      margin-bottom: 15px;
+      color: #f6ecd9;
+    }
+
+    .img {
+      width: 300px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .container {
+   	  margin: 50px auto;
+      padding: 25px;
+      max-width: 800px;
+      border-radius: 17px;
+      background-color: #ddeccb;
+      
+    }
+
+    input[type="text"] {
+      border-radius: 7px;
+      margin-bottom: 5px;
+      width: 250px;
+      padding: 9px;
+    }
+
+    .label-button {
+      background: #e3d3c4;
+      margin-bottom: 17px;
+      border-radius: 7px;
+      display: inline-block;
+    }
+
+    .calculate-btn {
+      border-radius: 7px;
+      cursor: pointer;
+      background: #e3d3c4;
+      color: #f6ecd9;
+    }
+
+    .output-box {
+      background: #e3d3c4;
+      color: #f6ecd9;
+      padding: 7px;
+      border-radius: 7px;
+      margin-top: 15px;
+    }
+	</style>
+</head>
+<body>
+
+	<h1>BMI Calculator</h1>
+	<p><b>Body Mass Index (BMI)</b> is a tool that healthcare providers use to estimate the amount of body fat by using your height and weight measurements. It can help assess risk factors for certain health conditions.</p>
+
+	<img src="BMI.png"/>
+
+	<div class="BMI container">
+		<div class="label-button">kilogram</div> <br>
+      	<input type="text" id="weight" placeholder="weight in kilogram" />
+      <br>
+      <br>
+        <div class="label-button">meter</div> <br>
+	    <input type="text" id="height" placeholder="height in meter" />
+	  <br>
+	  <br>
+    	<button class="calculate-btn" onclick="calculateBMI()">Calculate BMI</button>
+
+    	<div class="output-box" id="result"></div>
+  </div>
+
+
+  <script>
+    function calculateBMI() {
+      const weight = parseFloat(document.getElementById('weight').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const output = document.getElementById('result');
+
+      const bmi = weight / (height * height);
+      let category = '';
+
+	  if (bmi < 18.5) category = 'Underweight';
+      else if (bmi < 24.9) category = 'Normal weight';
+      else if (bmi < 29.9) category = 'Overweight';
+      else category = 'Obese';
+
+
+      output.innerText = `Your BMI is ${bmi.toFixed(2)} (${category})`;
+  }
+  </script>
+
+	</div>
+
+	<p>Note: BMI is not always correct</p>
+	<p>Sunga, Qwinzy</p>
+
+</body>
+</html>
